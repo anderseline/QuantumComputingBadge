@@ -36,3 +36,17 @@ def makeCirc(n, m):
     initializedState = stateGenerator(initState)
     circ.initialize(initializedState, qr)
     return circ
+
+def makeCirc2(n, m, o, inp):
+    initState = inp
+    for _ in range(0, m):
+        initState += str(0)
+    for _ in range(0, o):
+        initState += str(1)
+    print(initState)
+    qr = QuantumRegister(n)
+    qc = ClassicalRegister(n)
+    circ = QuantumCircuit(qr, qc)
+    initializedState = stateGenerator(initState)
+    circ.initialize(initializedState, qr)
+    return circ
