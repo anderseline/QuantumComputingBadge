@@ -1,5 +1,5 @@
 from qiskit import visualization, QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, execute, assemble
-from math import pi, sqrt
+from math import pi
 
 
 def getBloch(quantumC, backend):
