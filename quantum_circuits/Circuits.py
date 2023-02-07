@@ -1,6 +1,7 @@
 from qiskit import visualization, QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, execute, assemble
 from math import pi, sqrt
 
+
 def getBloch(quantumC, backend):
     return visualization.plot_bloch_multivector(
         execute(quantumC, backend).result().get_statevector()
@@ -13,7 +14,7 @@ def stateGenerator(state):
     newState[current] = 1
     return newState
 
-def getMeasure(quantumC, n, circ, backend):
+def getMeasure(circ, n, backend):
     measures = []
     for i in range(0, n):
         outcome = execute(circ, backend).result()
