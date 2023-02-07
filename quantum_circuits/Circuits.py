@@ -1,6 +1,7 @@
-from qiskit import visualization, QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, execute, assemble
+# import qiskit
+from qiskit import visualization, QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, execute
 from math import pi
-
+import random
 
 def getBloch(quantumC, backend):
     return visualization.plot_bloch_multivector(
@@ -22,3 +23,17 @@ def getMeasure(circ, n, backend):
         for i in hist.keys():
             measures.append(i)
         return measures
+    
+def makeCirc(n, m):
+    initState = ''
+    for _ in range(0, n-m):
+        initState += str(random.randint(0, 1))
+    for _ in range(0, m):
+        initState += str(0)
+    print(initState)
+    qr = QuantumRegister(n)
+    qc = ClassicalRegister(n)
+    circ = QuantumCircuit(qr, qc)
+    initializedState = stateGenerator(initState)
+    circ.initialize(initializedState, qr)
+    return circ
