@@ -1,4 +1,3 @@
-# import qiskit
 from qiskit import visualization, QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, execute
 from math import pi
 import random
