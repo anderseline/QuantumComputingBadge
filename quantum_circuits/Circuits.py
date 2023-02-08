@@ -1,5 +1,4 @@
 from qiskit import visualization, QuantumCircuit, QuantumRegister, ClassicalRegister, Aer, execute
-from math import pi
 import random
 
 def getBloch(quantumC, backend):
@@ -43,6 +42,25 @@ def makeCirc2(n, m, o, inp):
         initState += str(0)
     for _ in range(0, o):
         initState += str(1)
+    print(initState)
+    qr = QuantumRegister(n)
+    qc = ClassicalRegister(n)
+    circ = QuantumCircuit(qr, qc)
+    initializedState = stateGenerator(initState)
+    circ.initialize(initializedState, qr)
+    return circ
+
+def makeCirc3(n, m, o, inp=None):
+    initState = ''
+    for i in range(0, o):
+        initState += str(1)
+    if inp != None:
+        initState = inp
+    else:
+        for i in range(0, n-o-m):
+            initState += str(random.randint(0, 1))
+    for i in range(0, m):
+        initState += str(0)
     print(initState)
     qr = QuantumRegister(n)
     qc = ClassicalRegister(n)
